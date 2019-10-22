@@ -15,7 +15,7 @@ const io = require("socket.io")(server);
 
 app.use((req, res, next) => {
   req.io = io;
-  return next();
+  next();
 });
 
 app.use(
@@ -23,7 +23,7 @@ app.use(
   express.static(path.resolve(__dirname, "..", "uploads", "resized"))
 );
 app.use(cors());
-app.use(express.json());
+
 app.use(require("./routes"));
 
 server.listen(3333, () => {
